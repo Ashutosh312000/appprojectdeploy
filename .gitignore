@@ -2,3 +2,4 @@ node_modules
 key.pem
 server.key
 -server.cert
+.env
