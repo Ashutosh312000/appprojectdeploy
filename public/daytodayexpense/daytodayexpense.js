@@ -19,7 +19,7 @@ window.addEventListener("DOMContentLoaded", () => {
      if(decodeToken.ispremiumuser==true){
         downloadbtn.style.display='flex';
      }
-    axios.get('http://18.117.220.99:3000/expense/getexpense',{headers:{"Authorization" : token}})
+    axios.get('http://localhost:3000/expense/getexpense',{headers:{"Authorization" : token}})
         .then((response) => {
             for (var i = 0; i < response.data.length; i++) {
                 let myobj = response.data[i];
@@ -29,7 +29,7 @@ window.addEventListener("DOMContentLoaded", () => {
         .catch((err) => {
             console.log(err)
         })
-    axios.get('http://18.117.220.99:3000/files/downloadfiles',{headers:{"Authorization" : token}})
+    axios.get('http://localhost:3000/files/downloadfiles',{headers:{"Authorization" : token}})
         .then((response) => {
             for (var i = 0; i < response.data.files.length; i++) {
                 
@@ -77,7 +77,7 @@ downloadbtn.onclick= async function(e){
     try{
         const token=localStorage.getItem('token');                     
 
-    const response=await axios.get('http://18.117.220.99:3000/expense/download', {headers:{"Authorization" : token}});
+    const response=await axios.get('http://localhost:3000/expense/download', {headers:{"Authorization" : token}});
         
     var a=document.createElement('a');
     a.href=response.data.fileURL;

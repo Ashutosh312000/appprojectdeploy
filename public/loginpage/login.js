@@ -1,3 +1,5 @@
+
+
 const submitbtn=document.getElementById('submitbtn');
 const form=document.getElementById('form');
 
@@ -27,7 +29,7 @@ async function  login(e){
         password:password
     }
 
-   await  axios.post('http://18.117.220.99:3000/user/login',{logindetails})
+   await  axios.post('http://localhost:3000/user/login',{logindetails})
     .then((response)=>{
         localStorage.setItem('token',`${response.data.token}`) 
         alert(`${response.data.message}`);
@@ -35,12 +37,12 @@ async function  login(e){
         window.location.href="../expensepage/expense.html" 
     })
     .catch(err=>{
-        loginmessage(response.data.message);
+        loginmessage(err.response.data.message);
     });
 
     }
     catch(err){
-        loginmessage(err);
+        console.log(err);
     }
     
 }
