@@ -29,7 +29,7 @@ exports.forgotpassword=async (req,res,next)=>{
           from: 'ashutoshsharma.rrps@gmail.com', 
           subject: 'Password Reset Link',
           text: 'Password Reset Now',
-          html: `<a href="http://13.59.66.139:3000/password/resetpassword/${id}">Reset password</a>`,
+          html: `<a href="http://18.222.11.116:3000/password/resetpassword/${id}">Reset password</a>`,
          
         }
         

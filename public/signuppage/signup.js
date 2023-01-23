@@ -12,7 +12,7 @@ async function  signup(e){
         password:password
     }
 
-    axios.post('http://13.59.66.139:3000/user/signup',{userdetails})
+    axios.post('http://18.222.11.116:3000/user/signup',{userdetails})
     .then((response)=>{
         alert(`${response.data.message}`);
     })

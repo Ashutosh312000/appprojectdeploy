@@ -6,7 +6,7 @@ async function  forgotpassword(e){
      e.preventDefault();
     const email=e.target.email.value;
 
-   await  axios.post('http://13.59.66.139:3000/password/forgotpassword',{email})
+   await  axios.post('http://18.222.11.116:3000/password/forgotpassword',{email})
     .then((response)=>{
         alert(`${response.data.message}`);   
     })

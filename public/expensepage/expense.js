@@ -29,7 +29,7 @@ window.addEventListener("DOMContentLoaded", async () => {
         daytodayexpensesbtn.style.display='flex';
      }
 
-      const response1= await  axios.get(`http://13.59.66.139:3000/expense/getIndex?per_page=${PER_PAGE}`,{headers:{"Authorization" : token}})
+      const response1= await  axios.get(`http://18.222.11.116:3000/expense/getIndex?per_page=${PER_PAGE}`,{headers:{"Authorization" : token}})
             goto(response1);
             console.log(response1)
 
@@ -154,7 +154,7 @@ goto = (response) => {
     gotopage = (pagenumber) => {
         const token=localStorage.getItem('token');
         const PER_PAGE=localStorage.getItem('per_page');
-        axios.get(`http://13.59.66.139:3000/expense/getIndex?page=${pagenumber}&per_page=${PER_PAGE}`,{headers:{"Authorization" : token}})
+        axios.get(`http://18.222.11.116:3000/expense/getIndex?page=${pagenumber}&per_page=${PER_PAGE}`,{headers:{"Authorization" : token}})
             .then((response) => {
                 console.log('hello')
                 storeSection.remove();
@@ -176,7 +176,7 @@ async function expensesubmit(e) {
             Description: e.target.description.value,
             Catogary: e.target.catogary.value,
         }
-        await axios.post("http://13.59.66.139:3000/expense/postexpense", {expensedetails},{headers:{"Authorization" : token}})
+        await axios.post("http://18.222.11.116:3000/expense/postexpense", {expensedetails},{headers:{"Authorization" : token}})
             .then((response) => {
                 let myobj1 = response.data.expense;
                 makeuser(myobj1);
@@ -206,7 +206,7 @@ function makeuser(myobj) {
 deleteuser = function (e,key) {
     e.target.parentElement.parentElement.remove();
     const token=localStorage.getItem('token'); 
-    axios.delete(`http://13.59.66.139:3000/expense/deleteAddExpense/${key}`,{headers:{"Authorization" : token}})
+    axios.delete(`http://18.222.11.116:3000/expense/deleteAddExpense/${key}`,{headers:{"Authorization" : token}})
         .then((response) => {
             
         })
@@ -218,14 +218,14 @@ premiumbtn.onclick= async function(e){
 
     const token=localStorage.getItem('token');                     
 
-    const response=await axios.get('http://13.59.66.139:3000/purchase/premiummembership', {headers:{"Authorization" : token}});
+    const response=await axios.get('http://18.222.11.116:3000/purchase/premiummembership', {headers:{"Authorization" : token}});
     var options= 
     {
         "key":response.data.key_id, 
         "order_id":response.data.order.id,
 
         "handler": async function(response){
-          const response1=  await axios.post('http://13.59.66.139:3000/purchase/updatetransactionstatus',{ 
+          const response1=  await axios.post('http://18.222.11.116:3000/purchase/updatetransactionstatus',{ 
                 order_id:options.order_id,
                 payment_id:response.razorpay_payment_id, 
             },{headers : {"Authorization" :token}})  
@@ -245,7 +245,7 @@ premiumbtn.onclick= async function(e){
     e.preventDefault();
 
     rzp1.on('payment.failed',async function(response){ 
-        await axios.post('http://13.59.66.139:3000/purchase/updatetransactionstatusfailed',{ 
+        await axios.post('http://18.222.11.116:3000/purchase/updatetransactionstatusfailed',{ 
             order_id:options.order_id,
             payment_id:response.razorpay_payment_id, 
         },{headers : {"Authorization" :token}})  
@@ -259,7 +259,7 @@ showleaderboardbtn.onclick= async function(e){
     if(showleaderboardbtn.value=='off'){
         const token=localStorage.getItem('token');                     
 
-        const response=await axios.get('http://13.59.66.139:3000/premium/showleaderboard', {headers:{"Authorization" : token}});
+        const response=await axios.get('http://18.222.11.116:3000/premium/showleaderboard', {headers:{"Authorization" : token}});
     
         response.data.forEach(element => {
             const leaderboard_ul=document.createElement('ul');
