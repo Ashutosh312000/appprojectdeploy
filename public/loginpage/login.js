@@ -29,7 +29,7 @@ async function  login(e){
         password:password
     }
 
-   await  axios.post('http://localhost:3000/user/login',{logindetails})
+   await  axios.post('http://13.59.66.139:3000/user/login',{logindetails})
     .then((response)=>{
         localStorage.setItem('token',`${response.data.token}`) 
         alert(`${response.data.message}`);
